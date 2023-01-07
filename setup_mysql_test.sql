@@ -13,4 +13,3 @@ FLUSH PRIVILEGES;
 -- Grant SELECT privilege on the performance_schema database to the hbnb_dev user
 GRANT SELECT ON performance_schema.* TO 'hbnb_dev'@'localhost';
 FLUSH PRIVILEGES;
-
