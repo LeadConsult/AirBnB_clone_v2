@@ -33,6 +33,16 @@ class FileStorage:
         with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
             d = {k: v.to_dict() for k, v in FileStorage.__objects.items()}
             json.dump(d, f)
+            
+    def delete(self, obj=None):
+        """Deletes obj from __objects if it's inside.
+        
+        If obj is None, the method does nothing.
+        """
+        if obj is not None:
+            key = "{}.{}".format(type(obj).__name__, obj.id)
+            if key in FileStorage.__objects:
+                del FileStorage.__objects[key]
 
     def classes(self):
         """Returns a dictionary of valid classes and their references."""
