@@ -11,9 +11,15 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    def all(self):
-        """Returns __objects dictionary."""
-        # TODO: should this be a copy()?
+    def all(self, cls=None):
+        """Returns a list of objects of one type of class.
+        
+        If cls is not specified, returns the entire __objects dictionary.
+        """
+        if cls is not None:
+            objects = {k: v for k, v in FileStorage.__objects.items() if type(v).__name__ == cls}
+        else:
+            objects = FileStorage.__objects
         return FileStorage.__objects
 
     def new(self, obj):
