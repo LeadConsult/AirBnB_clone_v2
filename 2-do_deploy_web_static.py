@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """Distribute an archive to a web server"""
 
-import os
-from fabric.api import env, put, run
+import os.path
+from fabric.api import env
+from fabric.api import put
+from fabric.api import run
 
 env.hosts = ['100.25.223.88', '54.158.178.139']
-env.user = 'ubuntu'
-env.key_filename = '~/.ssh/id_rsa'
+
 
 def do_deploy(archive_path):
     """Distributes an archive to a web server.
